@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config>
+	<menu>
+        <chartmap module="chartmap">
+            <title>Chart Map</title>
+            <sort_order>71</sort_order>
+            <children>
+                <area_chart module="chartmap">
+                    <title>Area Chart Reports</title>
+                    <sort_order>23</sort_order>
+                    <action>chartmap/adminhtml_chartmap/areachart</action>
+                </area_chart>
+                <bar_chart module="chartmap">
+                    <title>Pie Chart Reports</title>
+                    <sort_order>22</sort_order>
+                    <action>chartmap/adminhtml_chartmap/pichart</action>
+                </bar_chart>
+                <map module="chartmap">
+                    <title>Map Reports</title>
+                    <sort_order>20</sort_order>
+                    <action>chartmap/adminhtml_chartmap/map</action>
+                </map>
+                <customer_group module="chartmap">
+                    <title>Customer Group Reports</title>
+                    <sort_order>21</sort_order>
+                    <action>chartmap/adminhtml_chartmap/customer_group</action>
+                </customer_group>
+				<settings translate="title" module="chartmap">
+                    <title>General Settings</title>
+                    <action>adminhtml/system_config/edit/section/chartmap_tab</action>
+                    <sort_order>40</sort_order>
+                </settings>
+            </children>
+        </chartmap>
+    </menu>
+	
+    <acl>
+        <resources>
+			<all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+			    <children>
+					<chartmap>
+						<title>Friend Invite</title>
+						<children>
+							<area_chart>
+								<title>Chart Reports</title>
+							</area_chart>
+							<bar_chart>
+								<title>Bar Reports</title>
+							</bar_chart>
+							<map>
+								<title>Map Reports</title>
+							</map>
+							<customer_group>
+								<title>Customer Group Reports</title>
+							</customer_group>
+						</children>
+					</chartmap>		
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <chartmap_tab>
+                                        <title>Friend Invite Setting</title>
+                                    </chartmap_tab>				
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

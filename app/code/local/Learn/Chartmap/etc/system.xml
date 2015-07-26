@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <myconf_vijaystore translate="label" module="chartmap">
+            <label>Chart Map</label>
+            <sort_order>100</sort_order>
+        </myconf_vijaystore>
+    </tabs>	
+	
+    <sections>
+        <chartmap_tab translate="label" module="chartmap">
+            <label>Chart Map</label>
+            <tab>myconf_vijaystore</tab>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <chartmap_setting translate="label comment">
+                    <label>Map Setting</label>
+                    <sort_order>503</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                      <chartmap_bgcolor translate="label comment">
+                            <label>Background Color</label>
+							<frontend_model>chartmap/adminhtml_system_config_form_field_colorpicker</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </chartmap_bgcolor>
+						<chartmap_bordercolor translate="label comment">
+                            <label>Border Color</label>
+							<!-- <frontend_type>text</frontend_type> -->
+							<frontend_model>chartmap/adminhtml_system_config_form_field_colorpicker</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </chartmap_bordercolor>		
+						<chartmap_color translate="label comment">
+                            <label>Color</label>
+							<!-- <frontend_type>text</frontend_type> -->
+							<frontend_model>chartmap/adminhtml_system_config_form_field_colorpicker</frontend_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </chartmap_color>
+						<jquery_enable translate="label comment">
+                            <label>jQuery Js (for Backend)</label>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+							<comment>jQuery Js Enable/Disable</comment>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </jquery_enable>						
+                     </fields>
+                </chartmap_setting>		
+            </groups>
+        </chartmap_tab>
+    </sections>
+</config>

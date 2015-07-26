@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<layout>
+    <chartmap_adminhtml_chartmap_map>
+		<reference name="head">
+			<!-- Add CSS -->
+			<action method="addCss">
+				<name helper="chartmap/data/jqvmapCss" />
+			</action>
+			
+			<!-- Add JS -->
+			<action method="addJs" ifconfig="chartmap_tab/chartmap_setting/jquery_enable">
+				<file helper="chartmap/data/jQueryJs" />
+			</action>
+			<action method="addJs">
+				<script>chartmap/jqvmap/conflict.js</script>
+			</action>			
+			<action method="addJs">
+				<script helper="chartmap/data/jqvmapJs" />
+			</action>
+			<action method="addJs">
+				<file helper="chartmap/data/jqvmapWorldJs" />
+			</action>
+			<!--
+			<block type="core/text" name="external_js">
+				<action method="setText">
+					<text>
+						<![CDATA[<script type="text/javascript">jQuery.noConflict();</script>]]>					
+					</text>
+				</action>
+			</block>
+			-->
+		</reference>
+    </chartmap_adminhtml_chartmap_map>
+	<chartmap_adminhtml_chartmap_customer_group>
+		<reference name="head">
+			<action method="addJs">
+				<file helper="chartmap/data/jsapi" />
+			</action>
+		</reference>
+	</chartmap_adminhtml_chartmap_customer_group>
+	<chartmap_adminhtml_chartmap_pichart>
+		<reference name="head">
+			<action method="addJs">
+				<file helper="chartmap/data/jsapi" />
+			</action>
+		</reference>
+	</chartmap_adminhtml_chartmap_pichart>
+	<chartmap_adminhtml_chartmap_areachart>
+		<reference name="head">
+			<action method="addJs">
+				<file helper="chartmap/data/jsapi" />
+			</action>
+		</reference>
+	</chartmap_adminhtml_chartmap_areachart>
+
+</layout>

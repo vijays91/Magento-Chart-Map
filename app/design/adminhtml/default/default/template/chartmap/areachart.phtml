@@ -1,0 +1,160 @@
+<?php
+/*- init helper -*/
+$helper = Mage::helper('chartmap');
+$result = $this->getTotalOrdersByFillter();
+$data = Mage::app()->getRequest()->getParams();
+$period	= isset($data['period']) ? $data['period'] : "24h";
+?>
+<div class="content-header">
+    <table cellspacing="0">
+        <tbody><tr>
+            <td style="width:50%;"><h3 class="icon-head">
+				<?php echo $this->__('Area Chart Report');?>
+				</h3>
+			</td>
+            <td class="form-buttons">&nbsp;</td>
+        </tr>
+    </tbody></table>
+</div>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form action="<?php echo Mage::getUrl('*/*/*');?>" method="post">
+			<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+			<p style="padding:5px 10px;" class="switcher a-right ">
+				<span style="float:left;color:#eb5e00;font-size:1.25em;line-height:1.2em;" class="a-left bold content-header">
+					 <span><?php echo $this->HeadText();?></span>
+				</span>
+				<!--
+				<?php echo $this->__('From:'); ?>
+				<input type="text" class="input-text no-changes" id="from" name="from" value="" />
+				<img title="Date selector" id="from_trig" class="v-middle" alt="trig" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."adminhtml/default/default/images/grid-cal.gif";?>" />
+				
+				&nbsp;&nbsp;		
+				<?php echo $this->__('To:');?>
+				<input type="text" class="input-text no-changes" value="" id="to" name="to" />
+				<img title="Date selector" id="to_trig" class="v-middle" alt="trig" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN)."adminhtml/default/default/images/grid-cal.gif";?>" />				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				--->
+				<span class=" bold">
+					<?php echo $this->__('Select Range:');?>					
+					<select id="chart_period" name="period" class="">
+						<option value="24h" <?php echo ($period == "24h") ? "selected" : ""; ?> >
+							<?php echo $this->__('Last 24 Hours');?>
+						</option>
+						<option value="lw" <?php echo ($period == "lw") ? "selected" : ""; ?>>
+							<?php echo $this->__('Last Week'); ?>
+						</option>
+						<option value="lm" <?php echo ($period == "lm") ? "selected" : ""; ?>>
+							<?php echo $this->__('Last Month');?>
+						</option>
+						<option value="l6m" <?php echo ($period == "l6m") ? "selected" : ""; ?>>
+							<?php echo $this->__('Last 6 Month');?>
+						</option>
+						<option value="ly" <?php echo ($period == "ly") ? "selected" : ""; ?>>
+							<?php echo $this->__('Last Year');?>
+						</option>					
+						<option value="l5y" <?php echo ($period == "l5y") ? "selected" : ""; ?>>
+							<?php echo $this->__('Last 5 Year');?>
+						</option>
+						<option value="l10y" <?php echo ($period == "l10y") ? "selected" : ""; ?>>
+							<?php echo $this->__('Last 10 Year');?>
+						</option>
+						<option value="cw" <?php echo ($period == "cw") ? "selected" : ""; ?>>
+							<?php echo $this->__('Current Week');?>
+						</option>
+						<option value="cm" <?php echo ($period == "cm") ? "selected" : ""; ?>>
+							<?php echo $this->__('Current Month');?>
+						</option>
+						<option value="c6m" <?php echo ($period == "c6m") ? "selected" : ""; ?>>
+							<?php echo $this->__('Current 6 Month');?>
+						</option>
+						<option value="cy" <?php echo ($period == "cy") ? "selected" : ""; ?>>
+							<?php echo $this->__('Current Year');?>
+						</option>
+					</select>
+					&nbsp;&nbsp;&nbsp;
+					<button class="scalable task" type="submit" title="Search" id="Search">
+						<span><span><span><?php echo $this->__('Search');?></span></span></span>
+					</button>
+				</span>
+			</form>
+		</p>
+		
+			<script type="text/javascript">
+			  google.load("visualization", "1", {packages:["corechart"]});
+			  google.setOnLoadCallback(drawChart);
+			  function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+					<?php echo $result; ?>
+				]);
+
+				var options = {
+				  title: 'Company Sales',
+				  hAxis: {title: '<?php echo $this->hAxis();?>',  titleTextStyle: {color: '#333'}},
+				  vAxis: {minValue: 0}
+				};
+
+				var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+				chart.draw(data, options);
+			  }
+			</script>
+			<div id="chart_div" style="width: 100%; height: 420px;"></div>
+	
+		<div style="margin:20px;">
+			<div id="dashboard_diagram_totals" class="box">
+				<div class="entry-edit">
+					<table width="100%" cellspacing="0">
+						<tbody>
+							<tr>
+								<td class="a-center bold">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+								<span style="font-size:18px; color:#EA7601;" class="nowrap"><span class="price">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:14px; color:#DE8946;"></span></span>
+								</td>
+									<td class="a-center bold">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+								<span style="font-size:18px; color:#EA7601;" class="nowrap"><span class="price">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:14px; color:#DE8946;"></span></span>
+								</td>
+								<td class="a-center bold">
+									<span>Revenue</span><br>
+									<span style="font-size:18px; color:#EA7601;" class="nowrap"><span class="price">
+										<?php echo $this->final_amount(); ?>
+									</span><span style="font-size:14px; color:#DE8946;"></span></span>
+								</td>
+									<td class="a-center bold">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+								<span style="font-size:18px; color:#EA7601;" class="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:14px; color:#DE8946;"></span></span>
+								</td>
+									<td class="a-center bold">
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><br>
+								<span style="font-size:18px; color:#EA7601;" class="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:14px; color:#DE8946;"></span></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</div>
+
+<script type="text/javascript">
+/*
+		Calendar.setup({
+			inputField : "from",
+			ifFormat : "%e/%m/%Y",
+			button : "from_trig",
+			showsTime: false,
+			align : "Bl",
+			singleClick : true
+		});
+		Calendar.setup({
+			inputField : "to",
+			ifFormat : "%e/%m/%Y",
+			button : "to_trig",
+			showsTime: false,
+			align : "Bl",
+			singleClick : true
+		});
+		*/
+</script>

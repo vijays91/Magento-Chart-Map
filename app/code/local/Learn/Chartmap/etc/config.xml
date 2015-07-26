@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Learn_Chartmap>
+            <version>1.0.0</version>
+        </Learn_Chartmap>
+    </modules>
+
+	<frontend>
+		<routers>
+			<chartmap>
+				<use>standard</use>
+				<args>
+					<module>Learn_Chartmap></module>
+					<frontName>chartmap</frontName>
+				</args>
+			</chartmap>
+		</routers>
+		<layout>
+			<updates>
+				<chartmap>
+					<file>learn/chartmap.xml</file>
+				</chartmap>
+			</updates>
+		</layout>
+	</frontend>
+
+    <global>
+		<blocks>
+            <chartmap>
+                <class>Learn_Chartmap_Block</class>
+            </chartmap>
+        </blocks>
+		<!-- Initialize the Helper class -->
+		<helpers>
+			<chartmap>
+				<class>Learn_Chartmap_Helper</class>
+			</chartmap>
+		</helpers>
+    </global>
+	
+	<admin>
+        <routers>
+            <chartmap>
+                <use>admin</use>
+                <args>
+                    <module>Learn_Chartmap</module>
+                    <frontName>chartmap</frontName>
+                </args>
+            </chartmap>
+        </routers>
+    </admin>
+	
+	<adminhtml>
+		<layout>
+			<updates>
+				<chartmap module="chartmap">
+					<file>learn/chartmap.xml</file>
+				</chartmap>
+			</updates>
+		</layout>
+	</adminhtml>
+	
+	<default>
+		<chartmap_tab>
+			<chartmap_setting>
+				<chartmap_bgcolor>#FFFFFF</chartmap_bgcolor>
+				<chartmap_bordercolor>#000</chartmap_bordercolor>
+				<chartmap_color>#9FD5F1</chartmap_color>
+				<jquery_enable>1</jquery_enable>
+			</chartmap_setting>
+		</chartmap_tab>
+	</default>	
+</config>
