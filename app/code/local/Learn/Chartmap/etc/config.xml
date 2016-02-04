@@ -11,7 +11,7 @@
 			<chartmap>
 				<use>standard</use>
 				<args>
-					<module>Learn_Chartmap></module>
+					<module>Learn_Chartmap</module>
 					<frontName>chartmap</frontName>
 				</args>
 			</chartmap>
