@@ -42,7 +42,7 @@
             <admin>
 			    <children>
 					<chartmap>
-						<title>Friend Invite</title>
+						<title>Chart Map</title>
 						<children>
 							<area_chart>
 								<title>Chart Reports</title>
@@ -63,7 +63,7 @@
                             <config>
                                 <children>
                                     <chartmap_tab>
-                                        <title>Friend Invite Setting</title>
+                                        <title>Chart Map Setting</title>
                                     </chartmap_tab>				
                                 </children>
                             </config>
