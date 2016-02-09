@@ -46,7 +46,8 @@ jQuery(document).ready(function() {
 		values: data,
 		normalizeFunction: 'polynomial',
 		onLabelShow: function(event, label, code) {
-			if (json[code]) {
+			if (json != null && json[code]) {
+			/* if (json[code]) { */
 				label.html('<strong>' + label.text() + '</strong><br />' + '<?php echo "Order(s) "; ?> ' + json[code]['total'] + '<br />' + '<?php echo "Sale(s) "; ?> ' + json[code]['amount']);
 			}
 		}
